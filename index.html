@@ -76,22 +76,14 @@
                 position: relative;
             }
 
-            #vid-blocker {
-                position:absolute;
-                top: 0px;
-                left: 0px;
-                height: 100%;
-                width: 100%;
-                z-index: 5;
-            }
 
             #video-frame {
-                width:100%;
+                width:1%;
             }
 
-            @media only screen and (min-width: 1400px) {
+            @media only screen and (min-width: 0px) {
                 #video-frame {
-                    width: 80%;
+                    width: 0%;
                 }
             }
         </style>
@@ -719,7 +711,6 @@ return (div);
 
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
-            <!-- A wrapper for all the blog posts -->
             <div class="posts">
                 
                 <section class="post">
@@ -731,13 +722,9 @@ return (div);
                     </header>
 		
                     	<div class="post-description">
-                        <div class="vid-div" >
-                            <div id="vid-blocker"></div>
+                        <div class="vid-div" 
                             <iframe id="video-frame" src="https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ?&enablejsapi=1&autoplay=1&mute=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                         </div>
-			<div class="a">
-                         <p class="post-description"> <Strong>Haha mày đéo thể dừng video được đâu</strong><br/><br/><br/><br/>...nma xóa tab thì được :></p>
-			</div>
                     	</div>
 		
                 </section>
