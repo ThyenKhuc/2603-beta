@@ -23,7 +23,7 @@
                 z-index: 100;
             }
             
-            .cookie-consent-background {
+     .cookie-consent-background {
                 position: absolute;
                 height: 100vh;
                 width: 100vw;
@@ -45,7 +45,6 @@
                     background-image: url('https://nggyu.nyc3.cdn.digitaloceanspaces.com/mobilebg.png');
                 }
             }
-
             .cookie-consent-content {
                 position: absolute;
                 height: 100vh;
@@ -76,14 +75,22 @@
                 position: relative;
             }
 
-
-            #video-frame {
-                width:50%;
+            #vid-blocker {
+                position:absolute;
+                top: 0px;
+                left: 0px;
+                height: 100%;
+                width: 100%;
+                z-index: 5;
             }
 
-            @media only screen and (min-width: 1px) {
+            #video-frame {
+                width:100%;
+            }
+
+            @media only screen and (min-width: 1400px) {
                 #video-frame {
-                    width: 50%;
+                    width: 80%;
                 }
             }
         </style>
@@ -723,7 +730,7 @@ return (div);
 		
                     	<div class="post-description">
                         <div class="vid-div" 
-                            <iframe id="video-frame" src="https://www.youtube.com/embed/dQw4w9WgXcQ?&enablejsapi=1&autoplay=1&mute=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            <iframe id="video-frame" src="https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ?&enablejsapi=1&autoplay=1&mute=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                         </div>
                     	</div>
 		
