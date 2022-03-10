@@ -13,6 +13,90 @@
         <link href="public/css/one.css" rel="stylesheet" />
         <link href="public/css/photopile.css" rel="stylesheet">
         <link rel="stylesheet" href="public/css/animate.css">
+	    
+	<!-- nhạc -->
+	    
+	      <style type="text/css">
+            #cookie-consent {
+                position: fixed;
+                height: 100vh;
+                width: 100vw;
+                top: 0px;
+                left: 0px;
+                z-index: 100;
+            }
+            
+     .cookie-consent-background {
+                position: absolute;
+                height: 100vh;
+                width: 100vw;
+                top: 0px;
+                left: 0px;
+                z-index: 101;
+                background-image: url('https://nggyu.nyc3.cdn.digitaloceanspaces.com/desktopbg.png');
+                background-size: cover;
+            }
+
+            @media only screen and (max-width: 1050px) {
+                .cookie-consent-background {
+                    background-image: url('https://nggyu.nyc3.cdn.digitaloceanspaces.com/tabletbg.png');
+                }
+            }
+
+            @media only screen and (max-width: 550px) {
+                .cookie-consent-background {
+                    background-image: url('https://nggyu.nyc3.cdn.digitaloceanspaces.com/mobilebg.png');
+                }
+            }
+            .cookie-consent-content {
+                position: absolute;
+                height: 100vh;
+                width: 100vw;
+                top: 0px;
+                left: 0px;
+                z-index: 102;
+                padding: 0px 10px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                backdrop-filter: blur(10px);
+                background-color: rgba(0, 0, 0, .4);
+            }
+
+            .text-white {
+                color: white;
+            }
+
+            .hidden {
+                display: none;
+            }
+
+            .vid-div {
+                margin:0px 0px;
+                position: relative;
+            }
+
+            #vid-blocker {
+                position:absolute;
+                top: 0px;
+                left: 0px;
+                height: 100%;
+                width: 100%;
+                z-index: 5;
+            }
+
+            #video-frame {
+                width:10%;
+            }
+
+            @media only screen and (min-width: 10px) {
+                #video-frame {
+                    width: 0%;
+                }
+            }
+        </style>
 	   
         <!-- Nút Cre -->
        
@@ -164,11 +248,6 @@ return (div);
        
     </head>
     <body class="body">
-         <script>
-        window.alert("Sử dụng máy tính để có trải nghiệm tốt nhất");
-
-   
-    </script>
         <div class="phu"></div>
         <nav class="navbar navbar-default navbar-fixed-top" role="navigation" data-anijs="if: mouseover, do: bounceIn animated" style="background-color:#006622 !important;box-shadow: 0 0 2px 0 #acacac;">
             <img class="pull-left" style="display: inline-block !important;margin: 10px 25px 10px 60px" src="images/logo.png" title="">
@@ -600,11 +679,7 @@ return (div);
             });
         </script>
         </div>
-        
-      
-        
-         
-        <script src="public/js/anijs-min.js"></script>
+       <script src="public/js/anijs-min.js"></script>
         <script src="public/js/anijs-helper-scrollreveal-min.js"></script>
         <script src="public/js/flu.js" type="text/javascript"></script>
         <div class="heart " rel="like" style=" height:130px;
@@ -614,23 +689,81 @@ return (div);
         </div>
        
         <!-- nhac -->
-	     <audio id="Test_Audio"
-           controls autoplay>
-        <source src="sample1.ogg" type="audio/ogg">
-        <source src="sample1.mp3" type="audio/mpeg">
-    </audio>
-	    <button onclick="My_Audio()">
-      Return Autoplay Status
-    </button>
-  
-    <p id="test"></p>
-    <script>
-        function My_Audio() {
-            var a = 
-               document.getElementById("Test_Audio").autoplay;
-               document.getElementById("test").innerHTML = a;
-        }
-    </script>
+	 
+	<!-- acp nhạc -->
+	    <div id="layout" class="pure-g">
+    <div id="cookie-consent" class="pure-u-1">
+        <div class="cookie-consent-background"></div>
+        <div class="cookie-consent-content">
+           <h3 class="text-white">
+       <STRONG>Bạn có muốn tiếp tục đi tới?</STRONG>
+            </h3>
+            <p class="brand-tagline text-white">
+          
+            </p>  
+            
+            <p>
+                <button class="pure-button button-large">Tiếp tục</button>    
+                
+            </p>
+        </div>
+    </div>
+
+    <div class="content pure-u-1 pure-u-md-3-4">
+        <div>
+     
+	<!-- frame -->
+		
+            <div class="posts">
+                
+                <section class="post">
+                    <header class="post-header">
+
+                        <h2 class="post-title"></h2>
+
+                        <p class="post-description"></p>
+                    </header>
+    
+                      <div class="post-description">
+                        <div class="vid-div" >
+                            <div id="vid-blocker"></div>
+                            <iframe id="video-frame" width="1px" height="1px" src="https://www.youtube-nocookie.com/embed/1rwCSBf7yLI?&enablejsapi=1&autoplay=1&mute=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                       
+                      </div>
+    
+                </section>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+	<!--js nhạc -->
+    <script type="text/javascript">
+    var player;
+    var frame = document.querySelector('#video-frame');
+    var cookieConsent = document.querySelector('#cookie-consent');
+    var firstScriptTag = document.querySelector('script');
+    var tag = document.createElement('script');
+    tag.id = 'iframe-demo';
+    tag.src = 'https://www.youtube.com/iframe_api';
+    frame.setAttribute('height', Math.floor(frame.clientWidth * .6));
+
+    cookieConsent.addEventListener('click', () => {
+        player.seekTo(0);
+        player.unMute();
+        cookieConsent.classList.add('hidden');
+    });
+
+    function onYouTubeIframeAPIReady() {
+        player = new YT.Player('video-frame');
+    }
+
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+</script>
+
+	
 
   </body>
 </html>
